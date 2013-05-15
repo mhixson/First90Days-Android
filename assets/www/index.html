@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+		<meta name="viewport" content="width = device-width, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="assets/style/global.css">
+		<title>The First 90 days</title>
+	</head>
+	<body id="splash-bg">
+		<div id="top-nav-container">
+			<h1 id="page-head"><span id="page-head-emphasis">The First</span> 90 Days</h1>
+		</div>		
+			<div id="intro-box">
+					<div id="intro-info" class="intro-info-container">
+						<p>This app will be your companion throughout the first 90 days in your new position. Each day, Monday through Friday, the app will send a notification prompting you to read a short piece of content or watch a video. You can turn notifications off at any time. Good Luck!</p>
+					</div>
+					<div id="intro-pick" class="intro-info-container">
+						<p>Pick a Monday to start your plan.</p><div class="white-carat"></div>
+					</div>
+					<!--div id="intro-browse" class="intro-info-container">
+						<p>Browse the app without starting up your plan and setting up daily notifications.</p><div class="grey-carat"></div>
+					</div-->
+			</div>
+			
+				<div id="setup-container">
+					<section id="setup-header">
+						<div class="header l"> Pick a Monday to Start </div>
+						<div class="header r"> </div>
+					</section>
+					
+					<section id="start-date" class="setup-item">
+						<div id="prev-date-arrow" class="prev arrow"><div></div></div>
+						<div id="last-week" class="prev start">jan 07</div>
+						<div id="this-week" class="selected start">jan 14</div>
+						<div id="next-week" class="next start">jan 21</div>
+						<div id="next-date-arrow" class="next arrow"><div></div></div>
+						<div id="start-circle-container">
+							<div id="start-circle"></div>
+						</div>
+					</section>
+					
+					<section id="setup-header">
+						<div class="header l"> Choose notification time</div>
+						<div class="header r"> </div>
+					</section>
+					<section id="notification-time" class="setup-item">
+						<div class="col time">
+							<div id="minus-hour" class="minus hour"><div></div></div>
+							<div id="minus-min" class="minus min"><div></div></div>
+							<div id="time">
+								<div id="hour" class="hour">4</div>
+								<div class="splitter">:</div>
+								<div id="min" class="min">15</div>
+							</div>
+							<div id="plus-hour" class="plus hour"><div></div></div>
+							<div id="plus-min" class="plus min"><div></div></div>
+						</div>
+						<div class="col period">
+							<div id="am" class="period am">am</div>
+							<div id="pm" class="period pm selected">pm</div>
+						</div>
+					</section>
+					<section id="opt-out"><div id="not-rad" class="radio"></div> Not interested in recieving notifications? </section>
+					<div id="error-out"></div>
+					<div id="setup-center">
+						<div id="cancel">cancel</div>
+						<div id="done">done</div>
+					</div>
+				</div>
+			
+			<img id="splash" src="assets/images/splash.png" />
+			<img id="splash-foot" src="assets/images/splash-bot.png" />
+			
+			<div id="bot-nav-container">
+			<div id="nav-buttons">
+				<div id="nav-my-plan" class="nav-button">
+					<div></div>
+				</div>
+				<div id="nav-button" class="search">
+					<div></div>
+				</div>
+				<div id="nav-favorites" class="nav-button">
+					<div></div>
+				</div>
+				<div id="nav-more" class='more'>
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<footer>
+		<script type="text/javascript" src="cordova-2.7.0.js"></script>
+		<!--script type="text/javascript" src="cordova.js"></script-->
+		<script type="text/javascript" src="plugin/localNotification/localNotification.js"></script>
+		<script type="text/javascript" src="plugin/mootools-core-1.4.5-full-nocompat.js"></script>
+		<script type="text/javascript" src="js/model.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/myplan.js"></script>
+		<script type="text/javascript" src="js/navigation.js"></script>
+		<script type="text/javascript" src="js/article.js"></script>
+		<script type="text/javascript" src="js/week.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/share.js"></script>
+        <script type="text/javascript" src="js/favorites.js"></script>
+        <script type="text/javascript" src="js/more.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+        <script type="text/javascript" src="js/howto.js"></script>
+        <script type="text/javascript" src="js/video.js"></script>
+	</footer>
+</html>

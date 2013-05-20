@@ -79,7 +79,7 @@
     <plugin name="Globalization" value="CDVGlobalization" />
     <plugin name="InAppBrowser" value="CDVInAppBrowser" />
     <plugin name="Notification" value="CDVNotification" />
-    <plugin name="LocalNotification" value="LocalNotification" />
+    <!-- plugin name="LocalNotification" value="LocalNotification" / -->
 </plugins>
 
     <access origin="*" />

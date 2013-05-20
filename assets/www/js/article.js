@@ -25,9 +25,6 @@ var ArticlePage = new Class({
         if (callback) {
             this.backButtonCallback = callback;
         }
-//        this.timeoutA;
-//        this.timeoutB;
-//        this.buttonInterval = 4000;
 	},
     setSecondaryArticles: function(results) {
         //alert('results are ' + results.rows.length + ' items long');
@@ -40,7 +37,6 @@ var ArticlePage = new Class({
             var sa = new SecondaryArticle( id, title, type );
             this.secondaryArticles[i] = sa;  // ARGH! Why doesn't array.push() work for this object?
         }
-//        alert('leaving setSecondaryArticles');
     },
 	//Callback
 	populateArticle: function ( results ) {
@@ -111,30 +107,11 @@ var ArticlePage = new Class({
                                         +				'</div></div>'
                         });
                     secondaryContent.inject($('content-container'));
-            } // end for
-//            article.addEventListener( 'touchstart', function() {
-//                                                      clearTimeout(this.timeoutA);
-//                                                      clearTimeout(this.timeoutB);
-//                                                      me.showNextPrevButtons(me);
-//                                        } // end anonymous function
-//                                    ); // end call to addEventListener
-//            me.showNextPrevButtons(me);
+            }
         }
         nav.share.UpdateCallbackAndShow( function () { nav.sharePop.toggle(); }, [] );
         nav.back.UpdateCallbackAndShow( me.backButtonCallback, me.week );
 	},
-//    showNextPrevButtons: function(me) {
-//    	console.log( 'prev next buttons have been disabled: article 112' );
-//       /* //Prev/Next
-//        if( ( me.day != null ) && ( me.day > 1 ) ) {
-//            nav.prev.UpdateCallbackAndShow( page.goToArticleViaWeekDay, me.week + '::' + ( me.day - 1 ) );
-//            me.timeoutA = setTimeout(function() {nav.prev.hide();}, this.buttonInterval);
-//        }
-//        if( ( me.day != null ) && ( me.day < 5 ) ) {
-//            nav.next.UpdateCallbackAndShow( page.goToArticleViaWeekDay, me.week + '::' + ( me.day + 1 ) );
-//            me.timeoutB = setTimeout(function() {nav.next.hide();}, this.buttonInterval);
-//        }*/
-//    },
 	//Generates the weekly progress rings
 	weeksProgress: function ( day ) {
 		var progress = '';

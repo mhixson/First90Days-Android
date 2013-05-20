@@ -124,22 +124,26 @@ function SetNotificationsForWeek( ) {
 			RegisterSingleNotification( noteDate );
 		} 
 	} else if ( notificationsDisabled == 1 ) {
+		console.log('**** killing all notifications from SetNotificationsForWeek ****');
 		KillNotifications();
 	}
 }
 
-function RegisterSingleNotification ( noteDate ) {
+function RegisterSingleNotification ( notificationDate ) {
+        console.log('inside RegisterSingleNotification');
 		var today = getNow();
 		//Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
-		console.log( 'dates [' + today + ' < ' + noteDate + ']' );
-		if( today  <= noteDate) {
+		if( today  <= notificationDate) {
+            console.log( 'notification is in the future [' + today + ' < ' + notificationDate + ']' );
 			console.log( 'Still valid though' );
-			localNotification.queue( noteDate.getTime(), {
-					seconds: ( noteDate.getTime() - today.getTime() ) / msSec,
+			localNotification.queue( notificationDate.getTime(), {
+					notificationDate: notificationDate,
 					message: ' View Today\'s Content ',
 					badge: 0
 			});
-		}
+		} else {
+            console.log( 'notification is in the past [' + today + ' > ' + notificationDate + ']' );
+        }
 }
 
 

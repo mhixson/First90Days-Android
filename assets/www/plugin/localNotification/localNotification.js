@@ -1,45 +1,37 @@
 /**
  * 
- * @author Ally Ogilvie
- * @copyright WizCorp Inc. [ Incorporated Wizards ] 2011
- * @file localNotification.js for PhoneGap
- *
+ * TODO: change the implementation in this file to use the Android LocalNotification
  */
 
 if (window.cordova) {
 	window.document.addEventListener ( "receivedLocalNotification", receivedLocalNotification, false );
     window.document.addEventListener ( "deviceready", function () {
-        cordova.exec(null, null, "LocalNotification", "ready", []);
+        window.plugins = {
+                LocalNotificationPlugin: cordova.require( 'cordova/plugin/js/LocalNotification' )
+            };
+        console.log("Device ready");
     }, false);
+
 }
 
 var localNotification = {
-
-	add : function(id, options) {
-
-		return cordova.exec(null, null, "LocalNotification", "addNotification", [id, options]);
-	},
-
-	cancel : function(id) {
-		return cordova.exec(null, null, "LocalNotification", "cancelNotification", [id]);
-	},
 	
 	cancelAll : function() {
-        return cordova.exec(null, null,"LocalNotification", "cancelAllNotifications", []);
+		console.log("************** localNotification.cancelAll() called ****************");
+        //return cordova.exec(null, null,"LocalNotification", "cancelAllNotifications", []);
     },
     
     queue : function(id, options) {
-        
-		return cordova.exec(null, null, "LocalNotification", "queueNotification", [id, options]);
-	},
-
-    getApplicationBadge : function(s) {
-        return cordova.exec(s, null, "LocalNotification", "getApplicationBadge", []);
-    },
-        
-    setApplicationBadge : function(intValue, s) {
-        return cordova.exec(s, null, "LocalNotification", "setApplicationBadge", [intValue]);
-    }
+        console.log("************** notification queued for " + options.notificationDate + " ****************");
+        window.plugins.LocalNotificationPlugin.add({
+                    date : options.notificationDate,
+                    message : "First 90 Days\r\nSubtitle goes here",
+                    ticker : options.message,
+                    repeatDaily : false,
+                    id : id
+            });
+		//return cordova.exec(null, null, "LocalNotification", "queueNotification", [id, options]);
+	}
 
 }
 

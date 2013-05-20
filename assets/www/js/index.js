@@ -164,6 +164,7 @@ var SetupInit = new Class ({
 	Extends: DomObject,
 	initialize: function () {
 		//Clear all previous notifications to prevent issues.
+		console.log('**** killing all notifications from SetupInit ****');
 		KillNotifications();
 		this.setID ("intro-box");
 		this.start = new DomObject ();

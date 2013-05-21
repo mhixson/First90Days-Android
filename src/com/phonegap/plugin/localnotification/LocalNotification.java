@@ -52,10 +52,10 @@ public class LocalNotification extends CordovaPlugin {
 			this.add(daily, title, subTitle, ticker, alarmId,
 					alarmOptions.getCal());
 		} else if (action.equalsIgnoreCase("cancel")) {
-			unpersistAlarm(alarmId);
+			// BUG:  don't call this before cancelNotification because it removes items from the shared preferences. -> unpersistAlarm(alarmId);
 			this.cancelNotification(alarmId);
 		} else if (action.equalsIgnoreCase("cancelall")) {
-			unpersistAlarmAll();
+			// BUG:  don't call this before cancelNotification because it removes items from the shared preferences. -> unpersistAlarmAll();
 			this.cancelAllNotifications();
 		}
 		callbackContext.success();
@@ -121,18 +121,16 @@ public class LocalNotification extends CordovaPlugin {
 	 * Cancel all notifications that were created by this plugin.
 	 */
 	public PluginResult cancelAllNotifications() {
-		Log.d(PLUGIN_NAME,
-				"cancelAllNotifications: cancelling all events for this application");
+		Log.d(PLUGIN_NAME, "cancelAllNotifications: cancelling all events for this application");
 		/*
 		 * Android can only unregister a specific alarm. There is no such thing
 		 * as cancelAll. Therefore we rely on the Shared Preferences which holds
 		 * all our alarms to loop through these alarms and unregister them one
 		 * by one.
 		 */
-		final SharedPreferences alarmSettings = cordova.getActivity()
-				.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE);
-		final boolean result = alarm.cancelAll(alarmSettings);
-
+		final SharedPreferences alarmSettings = cordova.getActivity().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE);
+		final boolean result = alarm.cancelAll(alarmSettings) && this.unpersistAlarmAll(); // if you don't unpersistAlarmAll then the alarms are not actually canceled.
+		Log.d(LocalNotification.PLUGIN_NAME, "cancelAllNotifications is returning [" + result + "]");
 		if (result) {
 			return new PluginResult(PluginResult.Status.OK);
 		} else {
@@ -161,22 +159,19 @@ public class LocalNotification extends CordovaPlugin {
 		return alarmSettingsEditor.commit();
 	}
 
-	/**
-	 * Remove a specific alarm from the Android shared Preferences
-	 * 
-	 * @param alarmId
-	 *            The Id of the notification that must be removed.
-	 * 
-	 * @return true when successfull, otherwise false
-	 */
-	private boolean unpersistAlarm(String alarmId) {
-		final Editor alarmSettingsEditor = cordova.getActivity()
-				.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
-
-		alarmSettingsEditor.remove(alarmId);
-
-		return alarmSettingsEditor.commit();
-	}
+//	/**
+//	 * Remove a specific alarm from the Android shared Preferences
+//	 * 
+//	 * @param alarmId
+//	 *            The Id of the notification that must be removed.
+//	 * 
+//	 * @return true when successfull, otherwise false
+//	 */
+//	private boolean unpersistAlarm(String alarmId) {
+//		final Editor alarmSettingsEditor = cordova.getActivity().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
+//		alarmSettingsEditor.remove(alarmId);
+//		return alarmSettingsEditor.commit();
+//	}
 
 	/**
 	 * Clear all alarms from the Android shared Preferences
@@ -184,11 +179,8 @@ public class LocalNotification extends CordovaPlugin {
 	 * @return true when successfull, otherwise false
 	 */
 	private boolean unpersistAlarmAll() {
-		final Editor alarmSettingsEditor = cordova.getActivity()
-				.getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
-
+		final Editor alarmSettingsEditor = cordova.getActivity().getSharedPreferences(PLUGIN_NAME, Context.MODE_PRIVATE).edit();
 		alarmSettingsEditor.clear();
-
 		return alarmSettingsEditor.commit();
 	}
 }

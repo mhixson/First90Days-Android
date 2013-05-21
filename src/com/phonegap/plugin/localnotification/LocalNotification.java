@@ -79,9 +79,7 @@ public class LocalNotification extends CordovaPlugin {
 	 *            should first be started
 	 * @return A pluginresult.
 	 */
-	public PluginResult add(boolean repeatDaily, String alarmTitle,
-			String alarmSubTitle, String alarmTicker, String alarmId,
-			Calendar cal) {
+	public PluginResult add(boolean repeatDaily, String alarmTitle, String alarmSubTitle, String alarmTicker, String alarmId, Calendar cal) {
 		final long triggerTime = cal.getTimeInMillis();
 		final String recurring = repeatDaily ? "daily" : "onetime";
 
@@ -89,8 +87,7 @@ public class LocalNotification extends CordovaPlugin {
 				+ alarmTitle + alarmSubTitle + "' with id: " + alarmId
 				+ " at timestamp: " + triggerTime);
 
-		boolean result = alarm.addAlarm(repeatDaily, alarmTitle, alarmSubTitle,
-				alarmTicker, alarmId, cal);
+		boolean result = alarm.addAlarm(repeatDaily, alarmTitle, alarmSubTitle, alarmTicker, alarmId, cal);
 		if (result) {
 			return new PluginResult(PluginResult.Status.OK);
 		} else {

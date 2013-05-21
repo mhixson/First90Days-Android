@@ -259,7 +259,6 @@ var Setup = new Class ({
             // this feels so horrible...
             if ( localStorage.getItem('sendMeBackToTheMorePage') == 'true' ) {
                 page.goToMore();
-                cleanup();
             } else {
                 ready(); // got tired of trying to figure out this flow so we're just restarting from the very beginning.
             } } );

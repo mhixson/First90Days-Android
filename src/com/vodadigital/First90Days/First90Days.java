@@ -30,7 +30,6 @@ public class First90Days extends DroidGap {
     {
         super.onCreate(savedInstanceState); 
         super.loadUrl(Config.getStartUrl());
-        //super.loadUrl("file:///assets/www/index.html");
     }
 }
 

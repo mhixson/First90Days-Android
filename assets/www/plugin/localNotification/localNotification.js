@@ -1,6 +1,5 @@
 /**
- * 
- * TODO: change the implementation in this file to use the Android LocalNotification
+ * This localNotification API is the same between our iOS and Android codebases.  It's basically 
  */
 
 if (window.cordova) {
@@ -18,19 +17,18 @@ var localNotification = {
 	
 	cancelAll : function() {
 		console.log("************** localNotification.cancelAll() called ****************");
-        //return cordova.exec(null, null,"LocalNotification", "cancelAllNotifications", []);
+        window.plugins.LocalNotificationPlugin.cancelAll();
     },
     
     queue : function(id, options) {
         console.log("************** notification queued for " + options.notificationDate + " ****************");
         window.plugins.LocalNotificationPlugin.add({
                     date : options.notificationDate,
-                    message : "First 90 Days\r\nSubtitle goes here",
+                    message : "First 90 Days\r\nView Today's Content",
                     ticker : options.message,
                     repeatDaily : false,
                     id : id
             });
-		//return cordova.exec(null, null, "LocalNotification", "queueNotification", [id, options]);
 	}
 
 }

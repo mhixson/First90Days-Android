@@ -130,7 +130,7 @@ function SetNotificationsForWeek( ) {
 }
 
 function RegisterSingleNotification ( notificationDate ) {
-        console.log('inside RegisterSingleNotification');
+        //console.log('inside RegisterSingleNotification');
 		var today = getNow();
 		//Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
 		if( today  <= notificationDate) {

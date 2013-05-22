@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 // Import your.package.R here
+import com.vodadigital.First90Days.First90Days;
 import com.vodadigital.First90Days.R;
 
 /**
@@ -74,14 +75,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 		// Construct the notification and notificationManager objects
 		final NotificationManager notificationMgr = (NotificationManager) systemService;
 		final Notification notification = new Notification(R.drawable.icon, tickerText, System.currentTimeMillis());
-		final PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(), 0);
+		final PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, First90Days.class), 0);
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.vibrate = new long[] { 0, 100, 200, 300 };
 		notification.setLatestEventInfo(context, notificationTitle, notificationSubText, contentIntent);
 
 		/*
 		 * If you want all reminders to stay in the notification bar, you should
-		 * generate a random ID. If you want do replace an existing
+		 * generate a random ID. If you want to replace an existing
 		 * notification, make sure the ID below matches the ID that you store in
 		 * the alarm intent.
 		 */

@@ -26,21 +26,18 @@ public class AlarmHelper {
     private Context ctx;
 
     public AlarmHelper(Context context) {
-	this.ctx = context;
+    	this.ctx = context;
     }
 
     /**
      * @see LocalNotification#add(boolean, String, String, String, int,
      *      Calendar)
      */
-    public boolean addAlarm(boolean repeatDaily, String alarmTitle, String alarmSubTitle, String alarmTicker,
-	    String notificationId, Calendar cal) {
-
+    public boolean addAlarm(boolean repeatDaily, String alarmTitle, String alarmSubTitle, String alarmTicker, String notificationId, Calendar cal) {
 		final long triggerTime = cal.getTimeInMillis();
 		final Intent intent = new Intent(this.ctx, AlarmReceiver.class);
 		final int hour = cal.get(Calendar.HOUR_OF_DAY);
 		final int min = cal.get(Calendar.MINUTE);
-	
 		intent.setAction("" + notificationId);
 		intent.putExtra(AlarmReceiver.TITLE, alarmTitle);
 		intent.putExtra(AlarmReceiver.SUBTITLE, alarmSubTitle);
@@ -48,17 +45,14 @@ public class AlarmHelper {
 		intent.putExtra(AlarmReceiver.NOTIFICATION_ID, notificationId);
 		intent.putExtra(AlarmReceiver.HOUR_OF_DAY, hour);
 		intent.putExtra(AlarmReceiver.MINUTE, min);
-	
 		final PendingIntent sender = PendingIntent.getBroadcast(this.ctx, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 		/* Get the AlarmManager service */
 		final AlarmManager am = getAlarmManager();
-	
 		if (repeatDaily) {
 		    am.setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, AlarmManager.INTERVAL_DAY, sender);
 		} else {
 		    am.set(AlarmManager.RTC_WAKEUP, triggerTime, sender);
 		}
-	
 		return true;
     }
 
@@ -103,8 +97,7 @@ public class AlarmHelper {
     }
 
     private AlarmManager getAlarmManager() {
-	final AlarmManager am = (AlarmManager) this.ctx.getSystemService(Context.ALARM_SERVICE);
-
-	return am;
+		final AlarmManager am = (AlarmManager) this.ctx.getSystemService(Context.ALARM_SERVICE);
+		return am;
     }
 }

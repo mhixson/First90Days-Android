@@ -33,8 +33,7 @@ public class LocalNotification extends CordovaPlugin {
 	private AlarmHelper alarm = null;
 
 	@Override
-	public boolean execute(String action, JSONArray optionsArr,
-			CallbackContext callbackContext) {
+	public boolean execute(String action, JSONArray optionsArr, CallbackContext callbackContext) {
 		alarm = new AlarmHelper(cordova.getActivity());
 		Log.d(PLUGIN_NAME, "Plugin execute called with action: " + action);
 		final AlarmOptions alarmOptions = new AlarmOptions();
@@ -49,8 +48,7 @@ public class LocalNotification extends CordovaPlugin {
 			final String subTitle = alarmOptions.getAlarmSubTitle();
 			final String ticker = alarmOptions.getAlarmTicker();
 			persistAlarm(alarmId, optionsArr);
-			this.add(daily, title, subTitle, ticker, alarmId,
-					alarmOptions.getCal());
+			this.add(daily, title, subTitle, ticker, alarmId, alarmOptions.getCal());
 		} else if (action.equalsIgnoreCase("cancel")) {
 			// BUG:  don't call this before cancelNotification because it removes items from the shared preferences. -> unpersistAlarm(alarmId);
 			this.cancelNotification(alarmId);

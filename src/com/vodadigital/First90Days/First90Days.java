@@ -19,6 +19,8 @@
 
 package com.vodadigital.First90Days;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import org.apache.cordova.*;
@@ -31,5 +33,14 @@ public class First90Days extends DroidGap {
         super.onCreate(savedInstanceState); 
         super.loadUrl(Config.getStartUrl());
     }
+	
+	/**
+	 * This is disallowing the app to change orientation when the device gets rotated.
+	 */
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	}
 }
 

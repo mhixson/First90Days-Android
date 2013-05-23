@@ -189,6 +189,11 @@ var SetupInit = new Class ({
 		    transition: Fx.Transitions.Pow.easeOut,
 		    property: 'width'
 		});
+		/* This sleep code was shamelessly stolen from stackoverflow. */
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while(curDate-date < 1000);
 		this.slideInFX.start(0, 258);
 	},
 	browseApp: function () {

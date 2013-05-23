@@ -17,7 +17,7 @@ var HowToPage = new Class ({
                                     'We know job transitions can be very busy, stressful times.  With that in mind, we\'ve kept all content ' +
                                     'short and to the point. <br/><br/>' +
                                     'For more in-depth reading, you can purchase The First 90 Days eBook via the link in the More menu of the app. ' +
-                                    '<br/><br/>Questions? Comments? Please get in touch via the Feedback link, also included in the More menu.<br/>' +
+                                    '<br/><br/>Questions? Comments? Please get in touch via the Feedback link, also included in the More menu.<br/><br/>' +
                                     'Thanks, and good luck in your new role!</div></div>';
 		var howToContent = new Element ('div', {
                             id: 'howToContent',

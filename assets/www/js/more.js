@@ -98,7 +98,7 @@ var MorePage = new Class({
                             'class': 'list-item',
                             html: '<div id="item-content" class="title">'
                                         +		'<div id="item-title">'
-                                        +			'<div id="item-title"><a style="color:black;text-decoration:none;" href="mailto:andrew.innes@harvardbusiness.org?subject=Feedback from First 90 app">Feedback</a></div>'
+                                        +			'<div id="item-title"><a style="color:black;text-decoration:none;" href="mailto:andrew.innes@harvardbusiness.org?subject=Feedback from First 90 Days app - Android">Feedback</a></div>'
                                         +		'</div>' 
                                         +	'</div>'
                                         +	'<div id="item-content" class="arrow">'

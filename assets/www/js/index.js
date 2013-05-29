@@ -163,9 +163,6 @@ var DomObject = new Class ({
 var SetupInit = new Class ({
 	Extends: DomObject,
 	initialize: function () {
-		//Clear all previous notifications to prevent issues.
-		console.log('**** killing all notifications from SetupInit ****');
-		KillNotifications();
 		this.setID ("intro-box");
 		this.start = new DomObject ();
 		this.start.setID ('intro-pick');
@@ -355,6 +352,7 @@ var Setup = new Class ({
         //It will be necessary to use parseInt when pulling the date back out for usage
 //        console.log('saving a startDate of ' + startDate);
         window.SaveSetupData(startDate.getTime(), getNotifications);
+        SetNotificationsForWeek();
 	},
 	cleanup: function () {
 		this.done.ELEMENT.removeEvents(touch);

@@ -28,8 +28,7 @@ import org.apache.cordova.*;
 public class First90Days extends DroidGap {
 
 	@Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); 
         super.loadUrl(Config.getStartUrl());
     }

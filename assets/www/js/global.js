@@ -135,7 +135,6 @@ function RegisterSingleNotification ( notificationDate ) {
 		//Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
 		if( today  <= notificationDate) {
             console.log( 'notification is in the future [' + today + ' < ' + notificationDate + ']' );
-			console.log( 'Still valid though' );
 			localNotification.queue( notificationDate.getTime(), {
 					notificationDate: notificationDate,
 					message: ' View Today\'s Content ',

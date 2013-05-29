@@ -21,7 +21,7 @@ var localNotification = {
     },
     
     queue : function(id, options) {
-        console.log("************** notification queued for " + options.notificationDate + " ****************");
+        console.log("************** notification with id [" + id + " queued for [" + options.notificationDate + "] ****************");
         window.plugins.LocalNotificationPlugin.add({
                     date : options.notificationDate,
                     message : "First 90 Days\r\nView Today's Content",
@@ -40,6 +40,21 @@ function receivedLocalNotification ( event )  {
   	}
  }
 
+function RegisterSingleNotification ( notificationDate ) {
+        //console.log('inside RegisterSingleNotification');
+        //var today = getNow();
+        //Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
+        //if( today  <= notificationDate) {
+        //	console.log( 'notification is in the future [' + today + ' < ' + notificationDate + ']' );
+        	localNotification.queue( notificationDate.getTime(), {
+                                        notificationDate: notificationDate,
+                                        message: ' View Today\'s Content ',
+                                        badge: 0
+            });
+        //} else {
+        //    console.log( 'not registering notification because it is in the past [' + today + ' > ' + notificationDate + ']' );
+        //}
+}
 
 /*
 *

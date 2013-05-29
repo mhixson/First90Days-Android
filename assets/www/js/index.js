@@ -332,6 +332,7 @@ var Setup = new Class ({
 	},
 	//Called when the done button is pressed
 	doneCB: function () {
+		KillNotifications();
 		localStorage.removeItem( 'notificationsWeek' );
 		startDate =  page.init.setup.datePicker.getPicked();
         startTime = page.init.setup.timePicker.getPicked();

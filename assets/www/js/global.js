@@ -96,55 +96,57 @@ var msWeek = 604800000;
 
 //Creates notifications for the next seven days if not exists
 function SetNotificationsForWeek( ) {
+	
 	// Notifications disabled?
 	var notificationsDisabled = localStorage.getItem( 'not' );
+	console.log("notificationsDisabled is [" + notificationsDisabled + "]");
 	// Get the start date
 	var sDate = parseInt( localStorage.getItem( 'startDate' ) );
 	// Create a date from the start week.
 	var firstMonday = new Date( sDate );
 	// Get Current week number
 	var curWeek = parseInt( GetCurrentWeek() );
-	
+	var today = getNow();
 	// Are notifications Disabled?
 	// and is the current week greater than the last registered week of notifications?
-	if( ( notificationsDisabled == 0 ) && ( curWeek > LastNotificationWeek() ) ) {
+	console.log("**************** inside SetNotificationsForWeek ****************");
+	console.log("localStorage.getItem( 'notifications_registered' ) returns [" + localStorage.getItem( 'notifications_registered' ) + "]");
+	if( ( notificationsDisabled == 0 ) && ( localStorage.getItem( 'notifications_registered' ) != 1 ) ) {
 		// Add this to the registered weeks list
-		RegisterNotificationWeeks( curWeek );
-		
-		//loop vars
-		var noteDate;
-		console.log( 'first monday [' + firstMonday + ']');
-		for( var i = 0; i < 5; i++ ) {
-			// Date/Time of our new Notification
-			console.log( 'curweek [' + curWeek+ ']');
-			noteDate = new Date( firstMonday.getTime() + ( ( curWeek )  * msWeek ) + ( i * msDay )  );
-			console.log( 'Notification time [' + noteDate + ']');
-			
-			
-			RegisterSingleNotification( noteDate );
-		} 
-	} else if ( notificationsDisabled == 1 ) {
-		console.log('**** killing all notifications from SetNotificationsForWeek ****');
-		KillNotifications();
+		try {
+			localStorage.setItem( 'notifications_registered', 1 );
+			//loop vars
+			console.log( 'first monday [' + firstMonday + ']');
+			var i = 0;
+			var start = getStart();
+			var noteDate = new Date( firstMonday.getTime() );
+			var lastWeek = 11;
+			var weekDays = 5;
+			var registeredNotifications = 0;
+			while( Math.floor( i / weekDays ) <=  lastWeek ) {
+				//Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
+        		if( today  <= noteDate) {
+        			//console.log('queing notification because it is in the future [' + today + ' < ' + noteDate + ']');
+					RegisterSingleNotification( noteDate );
+					registeredNotifications++;
+				} else {
+					//console.log('not registering notification because it is in the past [' + today + ' > ' + noteDate + ']');
+				}
+				//update vars for next loop iteration
+				i++;
+				noteDate = new Date( firstMonday.getTime() + ( Math.floor( i / weekDays )  * msWeek ) + ( ( i % weekDays ) * msDay )  );
+			}
+			console.log('Notifications registered [' + registeredNotifications + ']');
+		} catch (err) {
+			console.log("an error occurred [" + err + "].  we are killing notifications");
+			KillNotifications();
+		}
+	} else {
+		if ( notificationsDisabled == 1 ) {
+			KillNotifications();
+		}
 	}
 }
-
-function RegisterSingleNotification ( notificationDate ) {
-        //console.log('inside RegisterSingleNotification');
-		var today = getNow();
-		//Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
-		if( today  <= notificationDate) {
-            console.log( 'notification is in the future [' + today + ' < ' + notificationDate + ']' );
-			localNotification.queue( notificationDate.getTime(), {
-					notificationDate: notificationDate,
-					message: ' View Today\'s Content ',
-					badge: 0
-			});
-		} else {
-            console.log( 'notification is in the past [' + today + ' > ' + notificationDate + ']' );
-        }
-}
-
 
 function LastNotificationWeek () {
 	var notificationsWeeks = GetRegisteredNotificationWeeks();
@@ -158,7 +160,6 @@ function LastNotificationWeek () {
 				highest = notificationsWeeks[i];
 			}
 		}
-		console.log( 'HIGHEST WEEK: ' + highest );
 		return highest;
 	}
 }
@@ -185,7 +186,9 @@ function GetRegisteredNotificationWeeks () {
 }
 
 function KillNotifications () {
+	console.log("killing notifications");
 	localNotification.cancelAll();
+	localStorage.removeItem( 'notifications_registered');
 }
 
 //Determines current day/week
@@ -204,6 +207,7 @@ function GetCurrentWeek () {
 
 function GetCurrentDay () {
 	var start = getStart().toString();
+	
 	start = start.split( ' ' );
 	start[4] = '00:00:00';
 	start = start.join( " " );

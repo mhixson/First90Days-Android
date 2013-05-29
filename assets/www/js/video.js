@@ -1,10 +1,3 @@
-/*
-- copy contents of article.js into here
-- hack out the bits we don't need
-- save 'videoToWatch' in localStorage
-- load 'videoToWatch' into <video> tag
-- back button should return to the weekly view
-*/
 var VideoPage = new Class({
 	initialize: function ( videoURL, callback ) {
 		console.log( 'inside VideoPage' );

@@ -56,8 +56,9 @@ var MorePage = new Class({
                             'class': 'list-item',
                             events: {
                                 click: function (  ) {
-                                    window.open('https://itunes.apple.com/book/first-90-days-updated-expanded/id554886276?mt=11', '_system');
+                                    //window.open('https://itunes.apple.com/book/first-90-days-updated-expanded/id554886276?mt=11', '_system');
                                     console.log('You clicked Buy the Book');
+                                    page.goToBuyTheBook();
                                 }
                             },
                             html: '<div id="item-content" class="title">'

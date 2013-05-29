@@ -39,6 +39,13 @@ var IndexController = new Class ( {
 			page.goToMyPlan();
 		}
 	},
+	goToBuyTheBook: function () {
+		console.log('should be displaying Buy the Book page');
+        if ( page.init != null ) {
+            page.init.cleanup();
+        }
+		page.init = new BuyTheBookPage();
+	},
 	goToSetup: function () {
         //console.log('inside goToSetup');
         if ( page.init != null ) {

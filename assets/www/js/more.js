@@ -78,7 +78,7 @@ var MorePage = new Class({
                             'class': 'list-item',
                             events: {
                                 click: function (  ) {
-                                    window.open('https://itunes.apple.com/us/artist/harvard-business-review/id352065901', '_system');
+                                    window.open('https://play.google.com/store/apps/developer?id=Harvard+Business+Review', '_system');
                                     console.log('You clicked Other Apps from HBR');
                                 }
                             },

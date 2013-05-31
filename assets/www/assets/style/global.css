@@ -425,7 +425,7 @@ body {
 #week-icon {
 	/*background: url('../images/spritesheet.png') no-repeat -128px -12px;*/
 	border: 1.2px solid #000;
-	border-radius: 50%;
+	border-radius: 5px;
 	float: left;
 	height: 4px;
 	margin:  0 6px 0 0;

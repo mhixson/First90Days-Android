@@ -67,7 +67,7 @@ var WeeklyView = new Class ({
         //var color = 'color: #a0a0a0';
        
         /****************************
-        if (we are viewing the current week) {
+        //if (we are viewing the current week) {
             if (this week's video is unwatched) {
                 display arrow by video;
                 underline arrow link;
@@ -78,15 +78,15 @@ var WeeklyView = new Class ({
                 do not display arrow;
                 allow arrow to display next to article as is already done;
             }
-        }
+        //}
         *****************************/
         var arrowDisplayedByVideo = false;
         var videoArrowColor = '#fff';
         var backgroundColor = '#fff';
         var textColor = '#a0a0a0';
         var wColor = '#' + weekColor(this.week);
-        if (this.week == (GetCurrentWeek() + 1)) {
-          
+        
+        if (this.week <= (GetCurrentWeek() + 1)) {
             if (localStorage.getItem('week_' + this.week + '_alreadyViewed') != 1) {
                 videoArrowColor = weekColor(this.week);
                 console.log('videoArrowColor is [' + videoArrowColor + ']');
@@ -100,10 +100,10 @@ var WeeklyView = new Class ({
         } else {
             console.log('this is not the current week');
         }
-        console.log('videoArrowColor is: [' + videoArrowColor + ']');
-        console.log('backgroundColor is: [' + backgroundColor + ']');
-        console.log('textColor is:       [' + textColor + ']');
-        console.log('weekColor is:       [' + wColor + ']');
+        //console.log('videoArrowColor is: [' + videoArrowColor + ']');
+        //console.log('backgroundColor is: [' + backgroundColor + ']');
+        //console.log('textColor is:       [' + textColor + ']');
+        //console.log('weekColor is:       [' + wColor + ']');
         var videoDiv = new Element('div', {
             id: 'video-list-item',
 

@@ -79,8 +79,7 @@ var FavoritesListItem = new Class ({
                                         +		'</div>'
                                         +	'</div>',
                                         styles: {
-                                            'border-color': '#green',
-                                            'background-color': '#blue',
+                                            'border-color': '#green'
                                         },
                                     } );
         article.store( 'articleID',this.id );

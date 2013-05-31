@@ -542,7 +542,7 @@ body {
 }
 
 .current #item-arrow:after {
-	content: "\e666";	/* this is the arrow */
+	content: ">";	/* this is the arrow */
 	font-family: 'icomoon'; 
 	font-style: normal;
 	font-size: 60px;
@@ -555,7 +555,7 @@ body {
 }
 
 #video-item-arrow:after {
-    content: "\e666";	/* this is the arrow */
+    content: ">";	/* this is the arrow */
 	font-family: 'icomoon'; 
 	font-style: normal;
 	font-size: 60px;

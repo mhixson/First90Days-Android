@@ -64,7 +64,7 @@ var ArticlePage = new Class({
         }
         console.log( this.secondaryArticles );
         var html = ' <div id="today-date-head">'
-                        +		'<div id="today-date" class="arrow" style="color: #' + color + '">  &#8227 </div>' 
+                        +		'<div id="today-date" class="arrow" style="color: #' + color + '">  &#9654; </div>' 
                         +		'<div id="today-date" class="date">' + intDayToString( me.day ) + ' ' + date.getFormatedDate() + '</div>'
                         +	'</div>'
                         +	'<h2 id="today-subject" style=" color: #' + color + '; " >' + data.WEEKTITLE + '</h2>'

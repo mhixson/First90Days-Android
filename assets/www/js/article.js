@@ -62,7 +62,7 @@ var ArticlePage = new Class({
                       + '<source src="' + content.substring(7) + '" type="video/mp4">'
                       + '</video>';      
         }
-        console.log( this.secondaryArticles );
+        //console.log( this.secondaryArticles );
         var html = ' <div id="today-date-head">'
                         +		'<div id="today-date" class="arrow" style="color: #' + color + '">  &#9654; </div>' 
                         +		'<div id="today-date" class="date">' + intDayToString( me.day ) + ' ' + date.getFormatedDate() + '</div>'
@@ -78,7 +78,12 @@ var ArticlePage = new Class({
         var article = new Element ( 'div',
             {
                 id: 'article-container',
-                html: html
+                html: html,
+                events: {
+                   click: function() {
+                      // DO NOT REMOVE THIS POINTLESS FUNCTION!!!  It fixes an Android 4.1.2 bug where the app would crash when clicking on the article.
+                   }
+                }
             });
             article.inject( $( 'content-container' ) );
         if (data.TYPE == 'primary') {
@@ -111,7 +116,7 @@ var ArticlePage = new Class({
         }
         nav.share.UpdateCallbackAndShow( function () { nav.sharePop.toggle(); }, [] );
         nav.back.UpdateCallbackAndShow( me.backButtonCallback, me.week );
-	},
+	}, 
 	//Generates the weekly progress rings
 	weeksProgress: function ( day ) {
 		var progress = '';

@@ -59,6 +59,7 @@ var WeeklyView = new Class ({
 			}
 		);
         head.inject( page.init.container );
+        $('weekly-header').setAttribute('onclick', 'function() { }');
         var date = new nDate();
 		date.setDate( parseInt ( localStorage.getItem('startDate') ) );
 		var completed = false;

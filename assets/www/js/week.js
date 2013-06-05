@@ -159,13 +159,10 @@ var WeeklyView = new Class ({
         $('video-list-item').addEvent( 'click', function () {
 		                                                console.log('this.week is [' + w + ']');
 		                                                localStorage.setItem('week_' + w + '_alreadyViewed', 1);
-                                                        //window.open( page.init.video, '_blank', 'location=yes');  // this doesn't work on android very well
-                                                        /***
-                                                        todo: make this show and play a video the way that article.js does for secondary video content
-                                                        ***/
+                                                        // just open the video in a browser window.  window.open( page.init.video, '_blank', 'location=yes');  // this doesn't work on android very well
                                                         console.log("sending the user to the video page for video [" + page.init.video + "]");
                                                         window.page.goToVideo(page.init.video, function() { window.page.goToWeeklyView( w ) });
-                                                        //localStorage.setItem('videoToWatch', page.init.video);
+                                                        // localStorage.setItem('videoToWatch', page.init.video);
 		                                                //window.page.goToWeeklyView( w ); // this sends our app to the weekly view while the video url loads in the native browser
 		                                             } );                          
         if(  ( GetCurrentWeek() + 1 ) < w ) {

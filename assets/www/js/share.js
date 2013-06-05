@@ -50,7 +50,7 @@ var SharePopUp =  new Class ({
         var articleID = page.init.id;
         if (ArticleIsFavorite(articleID)) {
             ele = new Element ( 'div', { id: '','class': 'share-element', html: 'Remove from favorites <div id="fav-icon"></div>', });
-            ele.addEventListener( 'touchstart', function() {
+            ele.addEventListener( 'click', function() {
                                                   RemoveFromFavorites(articleID);
                                                   nav.sharePop.toggle();} // end anonymous function
                                                   ); // end call to addEventListener
@@ -58,7 +58,7 @@ var SharePopUp =  new Class ({
 
         } else {
             ele = new Element ( 'div', { id: '','class': 'share-element', html: 'Add to favorites <div id="fav-icon"></div>', });
-            ele.addEventListener( 'touchstart', function() {
+            ele.addEventListener( 'click', function() {
             									  navigator.notification.alert( 'Added to favorites', null , 'First 90 Days' );
                                                   AddToFavorites(articleID);
                                                   nav.sharePop.toggle();} // end anonymous function
@@ -66,7 +66,7 @@ var SharePopUp =  new Class ({
             ele.inject( $( 'share' ) );
         }
 		ele = new Element ( 'div', { id: '', 'class': 'share-cancel', html: 'Cancel <div id="close-icon"></div>', });
-		ele.addEvent( 'touchstart', nav.sharePop.toggle );
+		ele.addEvent( 'click', nav.sharePop.toggle );
 		ele.inject( $( 'share' ) );
 	
 		me.showing = true;

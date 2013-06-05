@@ -93,6 +93,7 @@ var MyPlan = new Class ({
 				}
 		);
 		head.inject( this.container );
+		$('plan-header-top').setAttribute('onclick', 'function() { }');
 	}
 });
 

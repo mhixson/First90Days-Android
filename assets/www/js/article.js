@@ -85,7 +85,7 @@ var ArticlePage = new Class({
                    }
                 }
             });
-            article.inject( $( 'content-container' ) );
+        article.inject( $( 'content-container' ) );
         if (data.TYPE == 'primary') {
             for (var i = 0;i < this.secondaryArticles.length;i++) {   
                     var articleId = this.secondaryArticles[i].id;

@@ -6,7 +6,7 @@ var MorePage = new Class({
 		this.container = $('content-container');
         localStorage.removeItem('sendMeBackToTheMorePage');
         nav.back.hide();
-    },
+    }, 
     render: function() {
         var moreContainer = new Element ('div', {
                             id: 'more-container'});
@@ -56,7 +56,7 @@ var MorePage = new Class({
                             'class': 'list-item',
                             events: {
                                 click: function (  ) {
-                                    window.open('https://play.google.com/store/books/details/Michael_Watkins_The_First_90_Days_Updated_and_Expa?id=QGkHs4pExOQC&feature=search_result#?t=W251bGwsMSwxLDEsImJvb2stUUdrSHM0cEV4T1FDIl0.', '_system');
+                                    //window.open('https://play.google.com/store/books/details/Michael_Watkins_The_First_90_Days_Updated_and_Expa?id=QGkHs4pExOQC&feature=search_result#?t=W251bGwsMSwxLDEsImJvb2stUUdrSHM0cEV4T1FDIl0.', '_system');
                                     console.log('You clicked Buy the Book');
                                     page.goToBuyTheBook();
                                 }

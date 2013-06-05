@@ -310,7 +310,7 @@ var Setup = new Class ({
 		});
 		this.slideInFX.start( -document.width, 0 );
 		this.addEvents();
-		$('setup-container').setAttribute('onclick', 'function() { alert("foo");/* do nothing to prevent Android 4.1.2 bug */ }');
+		$('setup-container').setAttribute('onclick', 'function() { /* do nothing to prevent Android 4.1.2 bug */ }');
 	},
 	//removes the window from the visible area
 	hide: function () {

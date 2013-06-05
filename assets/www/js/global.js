@@ -1,4 +1,3 @@
-
 //Traverses a html elements heirarchy to find a parent element with id equal to id
  function getParentByID ( element, id ) {
  	if( ( element.id.split('--').length < 2 ) && ( element.id != id ) && ( element.parentElement != null ) ){

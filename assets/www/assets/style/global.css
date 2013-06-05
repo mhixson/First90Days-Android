@@ -181,6 +181,7 @@ body {
 	background-color: #323232;
 	bottom: 0px;
 	height: 48px;
+	position: absolute;
 	left: 0px;
 }
 
@@ -419,7 +420,7 @@ body {
 #week-icon {
 	/*background: url('../images/spritesheet.png') no-repeat -128px -12px;*/
 	border: 1.2px solid #000;
-	border-radius: 50%;
+	border-radius: 4px; -webkit-border-radius: 4px; /* 50% */
 	float: left;
 	height: 4px;
 	margin:  0 6px 0 0;
@@ -752,13 +753,13 @@ body {
 
 .header.l {
 	border-width: 1px 1px 0px 0px;
-	border-radius: 0 4px 0 0;
+	border-radius: 0 4px 0 0;  -webkit-border-radius: 0 4px 0 0;
 	height: 20px;
 	padding: 5px 15px 0 0;
 }
 .header.r {
 	border-width: 0px 0px 1px 1px;
-	border-radius: 0 0 0 4px;
+	border-radius: 0 0 0 4px;  -webkit-border-radius: 0 0 0 4px;
 	height: 23px;
 	margin: 3px 0 0 -1px;
 	width: 10px;
@@ -831,7 +832,7 @@ body {
 /* This is the circle that goes around the date. */
 .selected.start {
 	border: 5px solid #05CCEA;
-	border-radius: 50%;
+	border-radius: 32px;  -webkit-border-radius: 32px; /*50%*/
 	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box;
 	color: #fff;
 	height: 65px;
@@ -913,7 +914,7 @@ body {
 
 #time {
 	border: 4px solid #05CCEA;
-	border-radius: 12px;
+	border-radius: 12px;  -webkit-border-radius: 12px;
 	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box;
 	height: 35px;
 	padding: 3px 10px;
@@ -970,7 +971,7 @@ body {
 .radio {
 	background-color: #fff;
 	border: 0px solid #fff;
-	border-radius: 50%;
+	border-radius: 8px;  -webkit-border-radius:5px; /* 50% */
 	-webkit-box-shadow: inset 1px 1px 5px 3px rgba(50, 50, 50, .25);
 	box-shadow: inset 1px 1px 5px 3px rgba(50, 50, 50, .25);
 	display: inline-block;
@@ -1404,7 +1405,7 @@ video {
 #search-box {
 	background-color: #05CCEA;
 	border: none;
-	border-radius: 1px;
+	border-radius: 1px;  -webkit-border-radius: 1px;
 	font-family: 'Helvetica neue';
 	float: left;
 	color: #fff;

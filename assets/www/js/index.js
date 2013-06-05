@@ -622,4 +622,13 @@ function ready ( ) {
 	console.log("we've received the deviceready event");
   	window.page = new IndexController ();
   	page.begin();
+  	scroll( 0,1 );
+  	//Android 2.x fixed rule solution
+  	$(window).addEvent('scroll', function () {
+	var yPosition = $(window).getHeight() + $(window).getScroll().y - $('bot-nav-container').getHeight();
+	$( 'bot-nav-container' ).set( 'styles', {
+			top: yPosition + 'px',
+		});
+	});
+  	
 }

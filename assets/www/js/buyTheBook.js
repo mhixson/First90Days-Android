@@ -16,8 +16,6 @@ var BuyTheBookPage = new Class ({
                             html: html
                             });
 		buyTheBookContent.inject($('content-container'));
-		$('content-container').setAttribute('onclick', 'function() { /* do nothing to prevent Android 4.1.2 bug */ }');
-        //$('linkToMore').setAttribute('onclick', 'page.goToMore()'); // I don't understand why an <a href> in the paragraph above wouldn't work, but this does.
 	},
 	GetNav: function () {
 		if( window.nav == null ){

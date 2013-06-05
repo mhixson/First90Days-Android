@@ -56,7 +56,7 @@ var MorePage = new Class({
                             'class': 'list-item',
                             events: {
                                 click: function (  ) {
-                                    //window.open('https://itunes.apple.com/book/first-90-days-updated-expanded/id554886276?mt=11', '_system');
+                                    window.open('https://play.google.com/store/books/details/Michael_Watkins_The_First_90_Days_Updated_and_Expa?id=QGkHs4pExOQC&feature=search_result#?t=W251bGwsMSwxLDEsImJvb2stUUdrSHM0cEV4T1FDIl0.', '_system');
                                     console.log('You clicked Buy the Book');
                                     page.goToBuyTheBook();
                                 }
@@ -78,7 +78,7 @@ var MorePage = new Class({
                             'class': 'list-item',
                             events: {
                                 click: function (  ) {
-                                    window.open('https://play.google.com/store/apps/developer?id=Harvard+Business+Review', '_system');
+                                    window.open('http://play.google.com/store/apps/developer?id=Harvard+Business+Review', '_system');
                                     console.log('You clicked Other Apps from HBR');
                                 }
                             },

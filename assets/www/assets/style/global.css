@@ -422,11 +422,7 @@ body {
 #week-icon {
 	/*background: url('../images/spritesheet.png') no-repeat -128px -12px;*/
 	border: 1.2px solid #000;
-<<<<<<< HEAD
-	border-radius: 5px;
-=======
 	border-radius: 4px; -webkit-border-radius: 4px; /* 50% */
->>>>>>> 4e9f5e1f89266efe72d6939c21ddf09e65f630eb
 	float: left;
 	height: 4px;
 	margin:  0 6px 0 0;

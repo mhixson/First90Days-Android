@@ -25,6 +25,7 @@ var HowToPage = new Class ({
                             });
 		howToContent.inject($('content-container'));
         $('linkToMore').setAttribute('onclick', 'page.goToMore()'); // I don't understand why an <a href> in the paragraph above wouldn't work, but this does.
+        $('content-container').setAttribute('onclick', 'function() { }');
 	},
 	GetNav: function () {
 		if( window.nav == null ){

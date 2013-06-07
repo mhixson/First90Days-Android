@@ -20,12 +20,12 @@ var localNotification = {
         window.plugins.LocalNotificationPlugin.cancelAll();
     },
     
-    queue : function(id, options) {
-        console.log("************** notification with id [" + id + " queued for [" + options.notificationDate + "] ****************");
+    queue : function(id, notificationDate) {
+        console.log("notification with id [" + id + " queued for [" + notificationDate + "]");
         window.plugins.LocalNotificationPlugin.add({
-                    date : options.notificationDate,
-                    message : "First 90 Days\r\nView Today's Content",
-                    ticker : options.message,
+                    date : notificationDate,
+                    message : "First 90 Days",
+                    ticker : "View Today\'s Content",
                     repeatDaily : false,
                     id : id
             });
@@ -33,27 +33,17 @@ var localNotification = {
 
 }
 
-function receivedLocalNotification ( event )  {
-	if ( !appOpen ) {
-		fromNotification = true;
-  		page.goToArticleViaWeekDay( "" + ( GetCurrentWeek() + 1 ) + "::" + ( GetCurrentDay() ) + "" );
-  	}
+function receivedLocalNotification ()  {
+	console.log("******* javascript has received a local notification **********");
+	try {
+		page.goToArticleViaWeekDay( "" + ( GetCurrentWeek() + 1 ) + "::" + ( GetCurrentDay() ) + "" );
+	} catch (err) {
+		console.log("***** ERROR: problem trying to call page.goToArticleViaWeekDay: [" + err + "]");
+	}
  }
 
 function RegisterSingleNotification ( notificationDate ) {
-        //console.log('inside RegisterSingleNotification');
-        //var today = getNow();
-        //Prevents notifications being added in the past - This should prevent multiple notifications from popping all at once.
-        //if( today  <= notificationDate) {
-        //	console.log( 'notification is in the future [' + today + ' < ' + notificationDate + ']' );
-        	localNotification.queue( notificationDate.getTime(), {
-                                        notificationDate: notificationDate,
-                                        message: ' View Today\'s Content ',
-                                        badge: 0
-            });
-        //} else {
-        //    console.log( 'not registering notification because it is in the past [' + today + ' > ' + notificationDate + ']' );
-        //}
+        localNotification.queue( Math.floor(Math.random()*9000000), notificationDate);
 }
 
 /*

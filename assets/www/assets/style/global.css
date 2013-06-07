@@ -834,11 +834,7 @@ body {
 /* This is the circle that goes around the date. */
 .selected.start {
 	border: 5px solid #05CCEA;
-<<<<<<< HEAD
-	border-radius: 50px;
-=======
 	border-radius: 32px;  -webkit-border-radius: 32px; /*50%*/
->>>>>>> 4e9f5e1f89266efe72d6939c21ddf09e65f630eb
 	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -o-box-sizing: border-box;
 	color: #fff;
 	height: 65px;

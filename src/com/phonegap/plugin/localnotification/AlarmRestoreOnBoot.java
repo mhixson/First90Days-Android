@@ -31,7 +31,7 @@ public class AlarmRestoreOnBoot extends BroadcastReceiver {
 		final Set<String> alarmIds = allAlarms.keySet();
 		
 		/*
-		 * For each alarm, parse its alarm options and register is again with
+		 * For each alarm, parse its alarm options and register it again with
 		 * the Alarm Manager
 		 */
 		for (String alarmId : alarmIds) {

@@ -1,6 +1,7 @@
 package com.phonegap.plugin.localnotification;
 
 import java.util.Calendar;
+import java.util.Set;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -34,32 +35,33 @@ public class AlarmReceiver extends BroadcastReceiver {
 	/* Contains time in 24hour format 'HH:mm' e.g. '04:30' or '18:23' */
 	public static final String HOUR_OF_DAY = "HOUR_OF_DAY";
 	public static final String MINUTE = "MINUTES";
+	public static final String WEEKANDDAY = "WEEKANDDAY";
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Log.d("AlarmReceiver", "AlarmReceiver invoked!");
-
 		final Bundle bundle = intent.getExtras();
+//		Log.d("AlarmReceiver", "extras contains [" + bundle.toString() + "]");
+		Set<String> keys = bundle.keySet();
+		for (String key : keys) {
+			Log.d("AlarmReceiver", "key [" + key + "] has value [" + bundle.get(key) + "]");
+		}
 		final Object systemService = context.getSystemService(Context.NOTIFICATION_SERVICE);
-
 		// Retrieve notification details from the intent
 		final String tickerText = bundle.getString(TICKER_TEXT);
 		final String notificationTitle = bundle.getString(TITLE);
 		final String notificationSubText = bundle.getString(SUBTITLE);
 		int notificationId = 0;
-
 		try {
 			notificationId = Integer.parseInt(bundle.getString(NOTIFICATION_ID));
 		} catch (Exception e) {
-			Log.d("AlarmReceiver", "Unable to process alarm with id: " + bundle.getString(NOTIFICATION_ID));
+			Log.d("AlarmReceiver", "Unable to process alarm with id: " + bundle.getString(NOTIFICATION_ID) + " because of exception [" + e.getMessage() + "]");
 		}
-
 		Calendar currentCal = Calendar.getInstance();
 		int alarmHour = bundle.getInt(HOUR_OF_DAY);
 		int alarmMin = bundle.getInt(MINUTE);
 		int currentHour = currentCal.get(Calendar.HOUR_OF_DAY);
 		int currentMin = currentCal.get(Calendar.MINUTE);
-
 		if (currentHour != alarmHour && currentMin != alarmMin) {
 			/*
 			 * If you set a repeating alarm at 11:00 in the morning and it
@@ -71,15 +73,17 @@ public class AlarmReceiver extends BroadcastReceiver {
 			Log.d(LocalNotification.PLUGIN_NAME, "AlarmReceiver, ignoring alarm since it is due");
 			return;
 		}
-
 		// Construct the notification and notificationManager objects
 		final NotificationManager notificationMgr = (NotificationManager) systemService;
 		final Notification notification = new Notification(R.drawable.icon, tickerText, System.currentTimeMillis());
-		final PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, First90Days.class), 0);
+		Intent i = new Intent(context, First90Days.class);
+		/* Here we are pulling the WEEKANDDAY value from the alarm intent and adding it to a new intent that will launch our First90Days activity. */
+		Log.d("AlarmReceiver", "putting WEEKANDDAY into the intent with value [" + bundle.getString(First90Days.WEEKANDDAY) + "]");
+		i.putExtra(First90Days.WEEKANDDAY, bundle.getString(First90Days.WEEKANDDAY));
+		final PendingIntent contentIntent = PendingIntent.getActivity(context, 0, i, 0);
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.vibrate = new long[] { 0, 100, 200, 300 };
 		notification.setLatestEventInfo(context, notificationTitle, notificationSubText, contentIntent);
-
 		/*
 		 * If you want all reminders to stay in the notification bar, you should
 		 * generate a random ID. If you want to replace an existing

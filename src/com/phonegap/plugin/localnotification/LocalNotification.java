@@ -82,7 +82,7 @@ public class LocalNotification extends CordovaPlugin {
 		final String recurring = repeatDaily ? "daily" : "onetime";
 
 		Log.d(PLUGIN_NAME, "Adding " + recurring + " notification: '"
-				+ alarmTitle + alarmSubTitle + "' with id: " + alarmId
+				+ alarmTitle + ":" + alarmSubTitle + "' with id: " + alarmId
 				+ " at timestamp: " + triggerTime);
 
 		boolean result = alarm.addAlarm(repeatDaily, alarmTitle, alarmSubTitle, alarmTicker, alarmId, cal);

@@ -3,7 +3,6 @@ package com.phonegap.plugin.localnotification;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.Set;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -22,7 +21,6 @@ import android.util.Log;
  * @author Matthew C. Rice <mrice@rcs.us>
  */
 public class AlarmHelper {
-
     private Context ctx;
 
     public AlarmHelper(Context context) {
@@ -45,6 +43,7 @@ public class AlarmHelper {
 		intent.putExtra(AlarmReceiver.NOTIFICATION_ID, notificationId);
 		intent.putExtra(AlarmReceiver.HOUR_OF_DAY, hour);
 		intent.putExtra(AlarmReceiver.MINUTE, min);
+		intent.putExtra(AlarmReceiver.WEEKANDDAY, "" + System.currentTimeMillis());
 		final PendingIntent sender = PendingIntent.getBroadcast(this.ctx, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 		/* Get the AlarmManager service */
 		final AlarmManager am = getAlarmManager();
@@ -68,7 +67,6 @@ public class AlarmHelper {
 		 */
 		final Intent intent = new Intent(this.ctx, AlarmReceiver.class);
 		intent.setAction("" + notificationId);
-	
 		final PendingIntent pi = PendingIntent.getBroadcast(this.ctx, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 		final AlarmManager am = getAlarmManager();
 	

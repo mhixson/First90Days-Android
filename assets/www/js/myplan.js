@@ -57,7 +57,9 @@ var MyPlan = new Class ({
 			item.ELEMENT.removeEvent('touchstart');
 			item.ELEMENT.dispose();
 		});
-		$( 'plan-header' ).dispose();
+		if ($('plan-header')) { // put this here because 'plan-header' doesn't seem to exist when we're trying to open an article directly from a notification
+			$( 'plan-header' ).dispose();
+		}
 		window.nav.hide();
 	},
 	page: function () {

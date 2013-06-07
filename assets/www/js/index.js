@@ -101,9 +101,10 @@ var IndexController = new Class ( {
 		GetFullArticle(page.init.populateArticle);
 		SetNotificationsForWeek();
 	},
-	goToArticleViaWeekDay: function ( weekDay ) {		
+	goToArticleViaWeekDay: function ( weekDay ) {
+		console.log("inside goToArticleViaWeekDay(" + weekDay + ")");
 		if( page.init != null ) { page.init.cleanup(); }
-		GetArticleIdByWeekDay( page.goToArticleCallback, weekDay );
+		GetArticleIdByWeekDay( page.goToArticle, weekDay );
 	},
 	goToArticleCB: function (tx, results ) {
 		page.goToArticle(  results.rows.item( 0 ).ID );
@@ -279,8 +280,8 @@ var Setup = new Class ({
 		//Time Picker
 		$( 'plus-hour' ).addEvent( touch, function() { page.init.setup.timePicker.adjustTime(60); });
 		$('minus-hour').addEvent( touch, function() { page.init.setup.timePicker.adjustTime(-60); });
-		$('plus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( 15 ); });
-		$('minus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( -15 ); });
+		$('plus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( 1 ); });
+		$('minus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( -1 ); });
 		$('am').addEvent( touch, function() { page.init.setup.timePicker.setPeriod( 0 ); });
 		$('pm').addEvent( touch, function() { page.init.setup.timePicker.setPeriod( 1 ); });
 		$('not-rad').addEvent( touch, function() { page.init.setup.notify.toggle( ); });

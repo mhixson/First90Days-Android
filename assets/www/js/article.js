@@ -10,7 +10,6 @@ var SecondaryArticle = new Class({
 
 var ArticlePage = new Class({
 	initialize: function ( id, callback ) {
-		console.log( 'test' );
 		//navigation activate back button with link to myplan
 		//initialize content pull
 		//We need this to allow jumping from this article to the prev or next
@@ -22,9 +21,20 @@ var ArticlePage = new Class({
         this.secondaryArticles = new Array(0);
         this.title;
         this.snippet;
+        this.GetNav();
         if (callback) {
             this.backButtonCallback = callback;
         }
+	},
+	GetNav: function () {
+		if( window.nav == null ){
+		 window.nav = new Navigation();
+		} else {
+			if( window.nav.hidden ) {
+				window.nav.show();
+			}
+		}
+		nav.setCurrentPage( 'article' );
 	},
     setSecondaryArticles: function(results) {
         //alert('results are ' + results.rows.length + ' items long');

@@ -280,8 +280,8 @@ var Setup = new Class ({
 		//Time Picker
 		$( 'plus-hour' ).addEvent( touch, function() { page.init.setup.timePicker.adjustTime(60); });
 		$('minus-hour').addEvent( touch, function() { page.init.setup.timePicker.adjustTime(-60); });
-		$('plus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( 1 ); });
-		$('minus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( -1 ); });
+		$('plus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( 15 ); });
+		$('minus-min').addEvent( touch, function() { page.init.setup.timePicker.adjustTime( -15 ); });
 		$('am').addEvent( touch, function() { page.init.setup.timePicker.setPeriod( 0 ); });
 		$('pm').addEvent( touch, function() { page.init.setup.timePicker.setPeriod( 1 ); });
 		$('not-rad').addEvent( touch, function() { page.init.setup.notify.toggle( ); });

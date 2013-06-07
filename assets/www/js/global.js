@@ -108,8 +108,8 @@ function SetNotificationsForWeek( ) {
 	var today = getNow();
 	// Are notifications Disabled?
 	// and is the current week greater than the last registered week of notifications?
-	console.log("**************** inside SetNotificationsForWeek ****************");
-	console.log("localStorage.getItem( 'notifications_registered' ) returns [" + localStorage.getItem( 'notifications_registered' ) + "]");
+	//console.log("**************** inside SetNotificationsForWeek ****************");
+	//console.log("localStorage.getItem( 'notifications_registered' ) returns [" + localStorage.getItem( 'notifications_registered' ) + "]");
 	if( ( notificationsDisabled == 0 ) && ( localStorage.getItem( 'notifications_registered' ) != 1 ) ) {
 		// Add this to the registered weeks list
 		try {

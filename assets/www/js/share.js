@@ -46,7 +46,6 @@ var SharePopUp =  new Class ({
        		}
        });
        ele.inject( share );
-       
         var articleID = page.init.id;
         if (ArticleIsFavorite(articleID)) {
             ele = new Element ( 'div', { id: '','class': 'share-element', html: 'Remove from favorites <div id="fav-icon"></div>', });

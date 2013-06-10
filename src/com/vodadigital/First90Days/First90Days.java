@@ -37,6 +37,7 @@ public class First90Days extends DroidGap {
 		/* clicking on a notification brings us through here.  how do we get at information associated with the event? */
         super.onCreate(savedInstanceState); 
         super.loadUrl(Config.getStartUrl());
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Bundle extras = getIntent().getExtras();
         Log.d("First90Days", "inside onCreate()");
         if (extras != null) {

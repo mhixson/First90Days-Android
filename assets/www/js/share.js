@@ -38,8 +38,8 @@ var SharePopUp =  new Class ({
        		id: '',
        		'class': 'e-share-element',
        		html: 'Share by email <a></a>',
-       		href: 'mailto:?subject=' + article.title + '&body=' +  encodeURIComponent( article.snippet ) + '  \n \n - From The First 90 Days app for iPhone',
-       		events: {
+       		href: 'mailto:?subject=' + article.title + '&body=' +  strip(article.snippet) + '  \n \n - From The First 90 Days app for iPhone',
+       		events: { 
        			click: function () {	
        				nav.sharePop.toggle();
        			}
@@ -79,3 +79,10 @@ var SharePopUp =  new Class ({
 		}
 	}
 });
+
+function strip(html)
+{
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent||tmp.innerText;
+}

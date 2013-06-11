@@ -51,6 +51,7 @@ var MorePage = new Class({
                                         +	'</div>'
                             });
         settingsDiv.inject(moreContainer);
+        /*
         var buyTheBookDiv = new Element ('div', {
                             id: 'buyTheBook',
                             'class': 'list-item',
@@ -73,6 +74,7 @@ var MorePage = new Class({
                                         +	'</div>'
                             });
         buyTheBookDiv.inject(moreContainer);
+        */
         var otherAppsDiv = new Element ('div', {
                             id: 'otherApps',
                             'class': 'list-item',

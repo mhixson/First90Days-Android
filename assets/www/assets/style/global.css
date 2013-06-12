@@ -184,7 +184,8 @@ body {
 	bottom: 0px;
 	height: 48px;
 	position: absolute;
-	left: 0px;
+	left: 0px !important;
+	bottom: 0px;
 }
 
 /* Top Nav */

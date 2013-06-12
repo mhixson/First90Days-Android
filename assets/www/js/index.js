@@ -634,22 +634,15 @@ function ready ( ) {
 	console.log("we've received the deviceready event");
   	window.page = new IndexController ();
   	page.begin();
-  	
-  	var yPosition = $( window ).getHeight() - $('bot-nav-container').getHeight();
-  	$( 'bot-nav-container' ).set( 'styles', {
-			position: 'fixed',
-			top: yPosition + 'px',
-	});
-	
- 
-  	
+  	 	
   	//Android 2.x fixed rule solution
-  	/*$(window).addEvent('scroll', function () {
-		var yPosition = $(window).getHeight() + $(window).getScroll().y - $('bot-nav-container').getHeight();
-		$( 'bot-nav-container' ).set( 'styles', {
+  	$(window).addEvent('scroll', function () {
+		var yPosition = $( window ).getHeight() - $('bot-nav-container').getHeight();
+	  	$( 'bot-nav-container' ).set( 'styles', {
+				position: 'fixed',
 				top: yPosition + 'px',
 		});
-	});*/ 
+	}); 
   	
   	/*setInterval( function() {
 	var yPosition = $( window ).getHeight() + $( window ).getScroll().y - $( 'bot-nav-container' ).getHeight();

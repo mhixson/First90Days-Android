@@ -38,7 +38,7 @@ var SharePopUp =  new Class ({
        		id: '',
        		'class': 'e-share-element',
        		html: 'Share by email <a></a>',
-       		href: 'mailto:?subject=' + article.title + '&body=' +  strip(article.snippet) + '  \n \n - From The First 90 Days app for iPhone',
+       		href: 'mailto:?subject=' + article.title + '&body=' +  strip(article.snippet) + '  \n \n - From The First 90 Days app for Android',
        		events: { 
        			click: function () {	
        				nav.sharePop.toggle();

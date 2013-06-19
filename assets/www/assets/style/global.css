@@ -1369,35 +1369,33 @@ video {
 	width: 18px;*/
 }
 
-#twitter-icon div {
-	background: url( '../images/twitter.png' );
+#twitter-icon {
+	background: url( '../images/twitter.png' ) no-repeat;
 	background-size: contain;
-	background-repeat:no-repeat;
-	float: left;
-	height: 24px;
-	margin: 20px 0 0 10px;
-	width: 24px;
+	height: 15px;
+	float: right;
+	margin: 0 10px 0 0;
+	width: 25px;
 }
 
-#facebook-icon div {
-	background: url( '../images/facebook.png' );
+#facebook-icon {
+	background: url( '../images/facebook.png' ) no-repeat;
 	background-size: contain;
-	background-repeat:no-repeat;
+	height: 15px;
 	float: right;
-	height: 18px;
-	margin: 20px 10px 0 0;
+	margin: 0 10px 0 0;
 	width: 20px;
 }
 
-#ln-icon div {
-	background: url( '../images/linkedin.png' );
+#linkedin-icon {
+	background: url( '../images/linkedin.png' ) no-repeat;
 	background-size: contain;
-	background-repeat:no-repeat;
+	height: 15px;
 	float: right;
-	height: 20px;
-	margin-top: 20px;
+	margin: 0 10px 0 0;
 	width: 20px;
 }
+
 
 
  /*===================================================

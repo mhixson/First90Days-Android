@@ -16,8 +16,12 @@ var VideoPage = new Class({
         }
         console.log('our video is [' + videoURL + ']');
         localStorage.setItem('videoToWatch', videoURL);
+        window.screenOrientation.set("sensor");
 	},
 	render: function () {
+		/* This is a horrible hack that removes the setup page from view when the app is viewed in portrait mode on this video page. 
+		   We restore the visibility of setup-container in the cleanup() function below.  */
+		$('setup-container').style.display = 'none';
 		console.log("inside render()");
 		var me = page.init;
         var content = '<video width="320" height="240" controls autoplay="autoplay">'
@@ -47,6 +51,8 @@ var VideoPage = new Class({
 		nav.share.hide();
 		nav.sharePop.hide();
 		nav.back.hide();
+		window.screenOrientation.set("portrait");
+		$('setup-container').style.display = 'inline';
 	}
 });
 

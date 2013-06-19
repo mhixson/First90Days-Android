@@ -230,9 +230,6 @@ var SetupInit = new Class ({
 	},
 	cleanup: function () {
 		this.start.ELEMENT.removeEvent( touch );
-		//this.setup.cleanup();
-		//$( 'setup-container' ).dispose(); /*** NOTE: do not dispose() something from the HTML if you want to be able to display it again in the future. */
-		
 	}
 });
 
@@ -321,15 +318,6 @@ var Setup = new Class ({
 		    property: 'margin-left'
 		});
 		this.slideInFX.start( 0, -document.width );
-	},
-	//Shakes the screen in a no gesture
-	nope: function () {
-		this.slideInFX = new Fx.Tween (this.ELEMENT , {
-		    duration: '500',
-		    transition: Fx.Transitions.Elastic.easeOut,
-		    property: 'margin-left'
-		});
-		this.slideInFX.start( 10, 0 );
 	},
 	//Called when the done button is pressed
 	doneCB: function () {
@@ -656,7 +644,24 @@ function ready ( ) {
   	scroll( 0,1 );
 }
 
+//wait for cordova to load
+        document.addEventListener("deviceready", phonegapReady, false);
 
+        function phonegapReady(){
+			console.log("inside phonegapReady");
+            //once cordova has loaded
+            try {
+	            var screenOrientation = function() {}
+	            screenOrientation.prototype.set = function(str, success, fail) {
+	                cordova.exec(null, null, "ScreenOrientation", "set", [str]);
+	            };
+	            window.screenOrientation = new screenOrientation();
+			} catch (err) {
+			    console.log("error while trying to call screenOrientation");
+			}
+            //To change screen orientation use
+            window.screenOrientation.set("portrait");
+        };
 
 
 

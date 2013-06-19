@@ -32,12 +32,13 @@ import android.util.Log;
 public class First90Days extends DroidGap {
 	public static final String WEEKANDDAY = "WEEKANDDAY";
 
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		/* clicking on a notification brings us through here.  how do we get at information associated with the event? */
         super.onCreate(savedInstanceState); 
         super.loadUrl(Config.getStartUrl());
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Bundle extras = getIntent().getExtras();
         Log.d("First90Days", "inside onCreate()");
         if (extras != null) {
@@ -50,10 +51,9 @@ public class First90Days extends DroidGap {
 				Log.d("First90Days", "***** Launched from a notification.");
 //				Log.d("First90Days", "calling receivedLocalNotification");
 				try {
-					Thread.sleep(4000);
+					//Thread.sleep(4000); /* <-- This is here because, while using the emulator, there was a lag between the time that the webview is ready and the call to sendJavascript gets called. */
 					this.sendJavascript("receivedLocalNotification();");
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} finally {
 //					Log.d("First90Days", "returned from call to receivedLocalNotification");
@@ -67,12 +67,20 @@ public class First90Days extends DroidGap {
     }
 	
 	/**
-	 * This prevents the app to change orientation when the device gets rotated.
+	 * This prevents the app from changing orientation when the device gets rotated.
 	 */
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
-	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	    Log.d("First90Days", "screen rotated");
+	    this.sendJavascript("setScreenOrientation();");
+	    //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	}
+	
+	@Override
+	public void setRequestedOrientation(int orientation) {
+		super.setRequestedOrientation(orientation);
+		Log.d("First90Days", "setRequestedOrientation called");
 	}
 	
 	@Override

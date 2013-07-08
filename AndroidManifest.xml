@@ -18,7 +18,7 @@
        under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
-      package="com.vodadigital.First90Days" android:versionName="1.0" android:versionCode="1" android:hardwareAccelerated="true">
+      package="com.HBR.First90Days" android:versionName="1.1" android:versionCode="2" android:hardwareAccelerated="true">
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -48,8 +48,8 @@
 
     <application android:icon="@drawable/icon" android:label="@string/app_name"
         android:hardwareAccelerated="true"
-        android:debuggable="true">
-        <activity android:name="First90Days" android:label="@string/app_name"
+        android:debuggable="false">
+        <activity android:name="com.vodadigital.First90Days.First90Days" android:label="@string/app_name"
                 android:theme="@android:style/Theme.Black.NoTitleBar"
                 android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale">
             <intent-filter>
@@ -69,5 +69,5 @@
         
     </application>
 
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="17"/>
+    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="17"/>
 </manifest> 

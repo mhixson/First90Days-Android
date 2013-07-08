@@ -14,7 +14,7 @@ import android.util.Log;
 
 // Import your.package.R here
 import com.vodadigital.First90Days.First90Days;
-import com.vodadigital.First90Days.R;
+import com.HBR.First90Days.R;
 
 /**
  * The alarm receiver is triggered when a scheduled alarm is fired. This class
